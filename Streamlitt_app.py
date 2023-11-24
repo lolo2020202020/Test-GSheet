@@ -1,11 +1,6 @@
-# example/st_app_gsheets_using_service_account.py
-
 import streamlit as st
-from streamlit_gsheets import GSheetsConnection
+import pandas as pd
 
-st.title("Read Google Sheet as DataFrame")
-
-conn = st.experimental_connection("gsheets", type=GSheetsConnection)
-df = conn.read(worksheet="Example 1")
-
-st.dataframe(df)
+# Dispay Title and Description
+st.title("Fridge")
+st.markdown("Enter the product below")
