@@ -1,11 +1,11 @@
-# example/st_app.py
+# example/st_app_gsheets_using_service_account.py
 
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 
-url = "https://docs.google.com/spreadsheets/d/1ipfG6cDGUQjfhl6DjAWXfFaPfs05URC_tM64Dfz7Wts"
+st.title("Read Google Sheet as DataFrame")
 
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
+df = conn.read(worksheet="Example 1")
 
-data = conn.read(spreadsheet=url, usecols=[0, 1])
-st.dataframe(data)
+st.dataframe(df)
