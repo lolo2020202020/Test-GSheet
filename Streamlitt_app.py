@@ -5,16 +5,21 @@ import pandas as pd
 st.title("Fridge")
 st.markdown("Enter the product below")
 
-# streamlit_app.py
 
 import streamlit as st
-from streamlit_gsheets import GSheetsConnection
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
-# Create a connection object.
-conn = st.connection("gsheets", type=GSheetsConnection)
+# Connect to Google Sheets
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+credentials = ServiceAccountCredentials.from_json_keyfile_name('sectrets.json', scope)
+gc = gspread.authorize(credentials)
 
-df = conn.read()
+# Open a worksheet
+sheet = gc.open('Your Google Sheet Name').sheet1  # Change 'Your Google Sheet Name' to your sheet's name
 
-# Print results.
-for row in df.itertuples():
-    st.write(f"{row.name} has a :{row.pet}:")
+# Read data from sheet
+data = sheet.get_all_records()
+
+# Display data in Streamlit
+st.write(data)
