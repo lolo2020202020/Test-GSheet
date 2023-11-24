@@ -1,19 +1,13 @@
+# streamlit_app.py
+
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
-import pandas as pd
 
-# Dispay Title and Description
-st.title("Fridge")
-st.markdown("Enter the product below")
+# Create a connection object.
+conn = st.connection("gsheets", type=GSheetsConnection)
 
+df = conn.read()
 
-#Establishing a Google Sheets Connection
-conn = st.experimental_connection("gsheets", type=GSheetsConnection)
-
-#Fetch existing product data
-existing_data = conn.read(worksheet="Products", usecols=list(range(2)), ttl=5)
-existing_data = existing_data.dropna(how="all")
-
-st.dataframe(existing_data)
-
-st.title("Frige")
+# Print results.
+for row in df.itertuples():
+    st.write(f"{row.name} has a :{row.pet}:")
