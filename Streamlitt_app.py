@@ -1,3 +1,12 @@
+# Create a virtual environment (Python 3.9 used here as an example)
+python3.9 -m venv myenv
+
+# Activate the virtual environment
+source myenv/bin/activate  # For Linux/Mac
+myenv\Scripts\activate  # For Windows
+
+
+import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
