@@ -1,4 +1,4 @@
-import gspread
+import gspread as st
 from oauth2client.service_account import ServiceAccountCredentials
 
 # Use your own credentials JSON file obtained from Google Cloud Platform
