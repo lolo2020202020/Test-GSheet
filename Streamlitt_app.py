@@ -1,5 +1,5 @@
 # Create a virtual environment (Python 3.9 used here as an example)
-python3.9 -m venv myenv
+python2.8.2 -m venv myenv
 
 # Activate the virtual environment
 source myenv/bin/activate  # For Linux/Mac
