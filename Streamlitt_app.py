@@ -1,8 +1,4 @@
-# Create a virtual environment (Python 3.9 used here as an example)
-python2.8.2 -m venv myenv
 
-# Activate the virtual environment
-source myenv/bin/activate  # For Linux/Mac
 
 import streamlit as st
 import gspread
