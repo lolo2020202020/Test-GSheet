@@ -10,5 +10,8 @@ db_name = "products-"
 connection = pymysql.connect(host=db_host, user=db_user, password=db_password, database=db_name)
 cursor = connection.cursor()
 
+# Performs SQL operations here
+
+
 # Close the connection
 connection.close()
