@@ -20,5 +20,9 @@ CREATE TABLE your_table_name (
 )
 """
 
+cursor.execute(create_table_query)
+
 # Close the connection
+connection.commit()
+cursor.close()
 connection.close()
