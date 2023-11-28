@@ -12,11 +12,13 @@ connection = pymysql.connect(host=db_host, user=db_user, password=db_password, d
 cursor = connection.cursor()
 
 # Performs SQL operations here
-create table fridge( 
-    column1_name product
-    column2_name owner
-);
-
+create_table_query = """
+CREATE TABLE your_table_name (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT
+)
+"""
 
 # Close the connection
 connection.close()
