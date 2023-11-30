@@ -7,3 +7,15 @@ conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
 data = conn.read(spreadsheet=url, usecols=[0, 1], worksheet="1585633377")
 st.dataframe(data)
+
+# Old code with streamlit-gsheets
+gc = GSheetsConnection()
+df = gc.read_sheet("Sheet1")
+
+# New code with shillelagh
+import shillelagh
+
+gc = shillelagh.connect()
+df = gc.read_sheet("Sheet1")
+
+
