@@ -1,28 +1,9 @@
 import streamlit as st
-import pymysql
+from streamlit_gsheets import GSheetsConnection
 
-# Database connection details 
-db_host = "34.65.8.211"
-db_user = "mysql-csgroupproject8-4"
-db_password = "+/iHlkkQ=YxD#Ip7"
-db_name = "products-"
+url = "https://docs.google.com/spreadsheets/d/1ipfG6cDGUQjfhl6DjAWXfFaPfs05URC_tM64Dfz7Wts/edit?usp=sharing"
 
-# Connect to the cloud database
-connection = pymysql.connect(host=db_host, user=db_user, password=db_password, database=db_name)
-cursor = connection.cursor()
+conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
-# Performs SQL operations here
-create_table_query = """
-CREATE TABLE your_table_name (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50),
-    age INT
-)
-"""
-
-cursor.execute(create_table_query)
-
-# Close the connection
-connection.commit()
-cursor.close()
-connection.close()
+data = conn.read(spreadsheet=url, usecols=[0, 1])
+st.dataframe(data)
